@@ -8,7 +8,8 @@ class RequestTest {
     @Test
     void requestCreate() {
         RequestLine requestLine = new RequestLine("GET /calculate?operand1=11&operator=*&operand2=22 HTTP/1.1");
-        Assertions.assertThat(requestLine).isNotNull();
-        Assertions.assertThat(requestLine).isEqualTo(new RequestLine("GET", "/calculate", "operand1=11&operator=*&operand2=22"));
+        Assertions.assertThat(requestLine)
+                .isNotNull()
+                .isEqualTo(new RequestLine("GET", "/calculate", "operand1=11&operator=*&operand2=22"));
     }
 }

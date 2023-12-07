@@ -1,5 +1,9 @@
 package me.minikuma.web;
 
+import me.minikuma.caculator.Calculator;
+import me.minikuma.web.parsing.HttpRequest;
+import me.minikuma.web.parsing.HttpResponse;
+import me.minikuma.web.parsing.QueryStrings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,10 +39,29 @@ public class CustomWebApplicationServer {
                     BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
                     DataOutputStream dos = new DataOutputStream(out);
 
-                    String line = null;
+                    /*String line = null;
 
                     while(!Objects.equals(line = br.readLine(), "")) {
                         System.out.println(line);
+                    }*/
+
+                    // http request
+                    HttpRequest httpRequest = new HttpRequest(br);
+
+                    if (httpRequest.isGetRequest() && httpRequest.matchPath("/calculate")) {
+                        logger.info("Request >>>>>>>>");
+                        QueryStrings queryStrings = httpRequest.getQueryString();
+
+                        int operand1 = Integer.parseInt(queryStrings.getValue("operand1"));
+                        int operand2 = Integer.parseInt(queryStrings.getValue("operand2"));
+                        String operator = queryStrings.getValue("operator");
+
+                        int result = Calculator.calculator(operand1, operator, operand2);
+                        byte[] body = String.valueOf(result).getBytes();
+                        // header 생성
+                        HttpResponse httpResponse = new HttpResponse(dos);
+                        httpResponse.responseHeader("application/json", body.length);
+                        httpResponse.responseBody(body);
                     }
                 }
             }
