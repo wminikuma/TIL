@@ -20,7 +20,6 @@ public class RequestLine {
 
         String[] uriToken = token[1].split("\\?"); // calculate ? operand1=11&operator=*&operand2=22
         this.uri = uriToken[0]; // /calculate
-        System.out.println(uri);
 
         if (uriToken.length == 2) {
             this.queryStrings = new QueryStrings(uriToken[1]); // operand1=11&operator=*&operand2=22
