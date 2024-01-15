@@ -5,8 +5,6 @@ S
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 Z
 *src/test/java/me/minikuma/UserDaoTest.java,6/7/67bef73b3fb22f0edabe464eee94241ae8578047
-`
-0src/main/java/me/minikuma/ConnectionManager.java,3/8/38f6479c4717d805964d448d87cbfdddf51eb75d
 k
 ;src/main/java/me/minikuma/connection/ConnectionManager.java,4/2/4210e03f40cc621f3bc9ca53d9af8a8a6b693333
 Z
@@ -18,3 +16,7 @@ Z
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+_
+/src/main/java/me/minikuma/dao/JdbcTemplate.java,6/c/6c47b9c55c6eca679d896017b67ec2a9c9c19642
+\
+,src/main/java/me/minikuma/dao/RowMapper.java,3/c/3caa8e6df9c36fb33b9736629a1c12905f684bb8
